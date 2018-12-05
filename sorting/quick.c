@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 int generateNumber();
 void fillArray(int*, int);
 void printArray(int*, int);
@@ -10,7 +8,6 @@ void printArray(int*, int);
 void quickSort(int*, int, int);
 int partition(int*, int, int);
 void swap(int*, int*);
-
 
 int main() {
 
@@ -29,20 +26,17 @@ int main() {
 }
 
 void fillArray(int* arr, int n) {
-
 	for (int i = 0; i < n; i++)
 		arr[i] = generateNumber();
 
 }
 
 int generateNumber() {
-
 	return rand() % 50;
 
 }
 
 void printArray(int* arr, int n) {
-
 	for (int i = 0; i < n; i++)
 		printf("%d ", arr[i]);
 
@@ -50,9 +44,7 @@ void printArray(int* arr, int n) {
 }
 
 void quickSort(int*arr, int first, int last) {
-
 	if (last>first) {
-
 		int pivotIndex = partition(arr, first, last);		
 		quickSort(arr, first, pivotIndex - 1);
 		quickSort(arr, pivotIndex + 1, last);
@@ -61,7 +53,6 @@ void quickSort(int*arr, int first, int last) {
 }
 
 int partition(int*arr, int first, int last) {
-
 	int pivot = arr[last];
 	int j = first;	
 
@@ -79,9 +70,7 @@ int partition(int*arr, int first, int last) {
 }
 
 void swap(int*a, int*b) {	
-
 	int temp = *a;
 	*a = *b;
 	*b = temp;
-
 }
