@@ -17,27 +17,35 @@ int partition(Point arr[], int first, int last, int axis) {
 	//order by x-axis
 	if (axis == x_axis) {
 
+		int i;
 		int pivot = arr[last].x;
 
-		for (int i = first; i < last; i++) {
+		for (i = first; i < last; i++) {
 			if (arr[i].x < pivot) {
-				swap_x_axis(arr, j++, i);
+				swap_x_axis(arr, j, i);
+				swap_y_axis(arr, j, i);
+				j++;
 			}
 		}
 
 		swap_x_axis(arr, j, last);
+		swap_y_axis(arr, j, last);
 	}
 	//order by y-axis
 	else {
 		
+		int i;
 		int pivot = arr[last].y;
 
-		for (int i = first; i < last; i++) {
+		for (i = first; i < last; i++) {
 			if (arr[i].y < pivot) {
-				swap_y_axis(arr, j++, i);
+				swap_x_axis(arr, j, i);
+				swap_y_axis(arr, j, i);
+				j++;
 			}
 		}
 
+		swap_x_axis(arr, j, last);
 		swap_y_axis(arr, j, last);
 	}
 

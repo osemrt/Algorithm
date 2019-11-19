@@ -2,7 +2,7 @@
 
 //A function that returns a random point array 
 //that will be used to test the algorithm.
-Point* generateRandomPoints(int N) {
+Point* generateRandomPoints(int N, int max) {
 
 	//Crating an point array with "N" size
 	Point* points = (Point*) malloc(sizeof(Point) * N);
@@ -15,8 +15,8 @@ Point* generateRandomPoints(int N) {
 	//with random numbers
 	//Also, subtract N/2 to allow negative points
 	for (int i = 0; i < N; i++) {
-		points[i].x = (rand() % N) - (N / 2);
-		points[i].y = (rand() % N) - (N / 2);
+		points[i].x = (rand() % max) - (max / 2);
+		points[i].y = (rand() % max) - (max / 2);
 	}
 
 	return points;

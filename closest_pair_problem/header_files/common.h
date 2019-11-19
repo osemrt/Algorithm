@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <float.h>
+#include <string.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -21,6 +23,6 @@ typedef struct {
 typedef struct {
 	Point p1;
 	Point p2;
-	double distance;
+	float distance;
 }PairedPoints;
 

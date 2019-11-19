@@ -9,7 +9,7 @@ int eliminateSamePoints(Point* arr, int N) {
 		for (int j = i + 1; j < N; ) {
 
 			//increment j variable after shifting
-			if ((arr[i].x == arr[j].x) && (arr[i].y == arr[j].x)) {
+			if ((arr[i].x == arr[j].x) && (arr[i].y == arr[j].y)) {
 
 				for (int k = j; k < N; k++) {
 					arr[k] = arr[k + 1];
