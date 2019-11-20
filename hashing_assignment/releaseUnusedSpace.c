@@ -8,7 +8,7 @@ char* releaseUnusedSpace(char* str) {
 
 	//Total character count
 	int count = i;
-	char* newStr = (char*)createArrayFromHeap(count + 1, CHAR);
+	char* newStr = (char*)createArrayFromHeap(CHAR, count + 1);
 	strcpy(newStr, str);
 
 	return newStr;

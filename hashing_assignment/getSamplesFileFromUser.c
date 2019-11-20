@@ -6,7 +6,7 @@ Samples getSamplesFileFromUser() {
 
 
 	FILE* fp;
-	char* filePath = (char*)createArrayFromHeap(200, CHAR);
+	char* filePath = (char*)createArrayFromHeap(CHAR, 200);
 	do {
 
 		printf("Drag and drop samples file\n");

@@ -1,6 +1,6 @@
 #include "header_files/declarations.h"
 
-void* createArrayFromHeap(int size, int TYPE) {
+void* createArrayFromHeap(int TYPE, int size) {
 
 	void* arr;
 	switch (TYPE)
@@ -13,6 +13,18 @@ void* createArrayFromHeap(int size, int TYPE) {
 		break;
 	case STRING:
 		arr = (char**)malloc(sizeof(char*) * size);
+		break;
+
+	case ENTRY:
+		arr = (Entry*)malloc(sizeof(Entry) * size);
+		break;
+	
+	case HASH_TABLE:
+		arr = (HashTable*)malloc(sizeof(HashTable) * size);
+		break;
+
+	case HASH_NODE:
+		arr = (HashNode*)malloc(sizeof(HashNode) * size);
 		break;
 
 	default:
