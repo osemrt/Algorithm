@@ -6,43 +6,83 @@ Samples getSamplesFileFromUser() {
 
 
 	FILE* fp;
-	char* filePath = (char*)createArrayFromHeap(CHAR, 200);
+	char* samplesFilePath = (char*)createArrayFromHeap(CHAR, 300);
 	do {
 
-		printf("Drag and drop samples file\n");
-		scanf("%s", filePath);
+		printf("Drag and drop samples.txt\n");
+		scanf("%s", samplesFilePath);
 
-		fp = fopen(filePath, "r");
+		fp = fopen(samplesFilePath, "r");
 		if (fp == NULL) {
 			//CSI[2J clears screen, 
 			//CSI[H moves the cursor to top-left corner
 			printf("\x1B[2J\x1B[H");
-			printf("Could not open file: %s\n", filePath);
+			printf("Could not open file: %s\n", samplesFilePath);
 		}
 
 	} while (fp == NULL);
 
 	Samples samples;
+	char* tmp;
 
+
+	//================================================================//
+	//Getting samples.txt file path									  //
+	char* str = (char*)createArrayFromHeap(CHAR, 300);				  //
+	strcpy(str, samplesFilePath);									  //		 
+	tmp = releaseUnusedSpace(str);									  //
+	samples.samplesPath = tmp;										  //
+	//================================================================//
+
+
+
+	//================================================================  
+	//rid of the file name 											   
+	//to find the root directory path								   
+	int k = strlen(samplesFilePath);
+
+	while (samplesFilePath[k] != '\\')
+		k--;
+	samplesFilePath[k] = '\0';
+	char* rootDirectory = releaseUnusedSpace(samplesFilePath);
+	samples.rootDirectory = rootDirectory;
+	//================================================================ 
+
+
+
+	//================================================================
 	int i = 0;
-	char* str[100];
+	char* dummy;
+	char* filePath;
+
+	File* file;
+
 	while (fgets(str, 100, fp) != NULL) {
-		samples.fileNames[i] = releaseUnusedSpace(str);
+		file = (File*)createArrayFromHeap(REGULAR_FILE, 1);
+		// to rid of \n
+		if (str[strlen(str) - 1] == '\n')
+			str[strlen(str) - 1] = '\0';
+		file->fileName = releaseUnusedSpace(str);
+		dummy = (char*)createArrayFromHeap(CHAR, 300);
+		dummy[0] = '\0';
+		strcat(dummy, rootDirectory);
+		strcat(dummy, "\\");
+		strcat(dummy, file->fileName);
+
+		file->filePath = releaseUnusedSpace(dummy);
+		free(dummy);
+		samples.files[i] = file;
 		i++;
 	}
+	//================================================================
 
-	//"i" holds the total file count
+
+
+	//"i" now holds the total file count
 	samples.count = i;
 
-	//rid of the file name 
-	//to find the root directory path
-	int k = strlen(filePath);
-	while (filePath[k] != '\\')
-		k--;
-	filePath[k] = '\0';
-	filePath = releaseUnusedSpace(filePath);
-	samples.filePath = filePath;
-
+	free(samplesFilePath);
+	free(str);
 	fclose(fp);
 
 	return samples;

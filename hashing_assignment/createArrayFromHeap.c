@@ -18,13 +18,17 @@ void* createArrayFromHeap(int TYPE, int size) {
 	case ENTRY:
 		arr = (Entry*)malloc(sizeof(Entry) * size);
 		break;
-	
+
 	case HASH_TABLE:
 		arr = (HashTable*)malloc(sizeof(HashTable) * size);
 		break;
 
 	case HASH_NODE:
 		arr = (HashNode*)malloc(sizeof(HashNode) * size);
+		break;
+
+	case REGULAR_FILE:
+		arr = (File*)malloc(sizeof(File) * size);
 		break;
 
 	default:
