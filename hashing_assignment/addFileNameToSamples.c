@@ -1,5 +1,6 @@
 #include "header_files/declarations.h"
 
+//A function to add a file name to samples.txt
 int addFileNameToSamples(char* samplesPath, char* fileName) {
 	FILE* fp = fopen(samplesPath, "a");
 

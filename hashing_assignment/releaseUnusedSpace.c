@@ -1,5 +1,7 @@
 #include "header_files/declarations.h"
 
+//A function to used to remove unused spaces
+//in the given string
 char* releaseUnusedSpace(char* str) {
 
 	int i = 0;

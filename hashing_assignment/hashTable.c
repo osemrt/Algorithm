@@ -1,5 +1,6 @@
 #include "header_files/declarations.h"
 
+//Creates a hash table with the given size
 void ht_create(int size) {
 
 	hashTable = (HashTable*)createArrayFromHeap(HASH_TABLE, 1);
@@ -13,6 +14,7 @@ void ht_create(int size) {
 
 }
 
+//Adds the given entry to the table as described in the assignment
 int ht_put(FILE* fp1, unsigned long int key, Entry* entry) {
 
 	int i = 0;
@@ -52,12 +54,10 @@ int ht_put(FILE* fp1, unsigned long int key, Entry* entry) {
 		return index;
 	}
 
-	//TODO: is there any other situation?
-
-
 }
 
 
+//Prints all hash table
 void ht_print() {
 
 	if (hashTable != NULL) {

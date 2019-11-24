@@ -1,5 +1,6 @@
 #include "header_files/declarations.h"
 
+//A function to add the file names in samples.txt to the table
 void addSamplesToHashTable(Samples samples) {
 	int i = 0;
 	int N = samples.count;

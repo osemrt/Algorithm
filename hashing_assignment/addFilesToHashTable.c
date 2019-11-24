@@ -1,5 +1,6 @@
 #include "header_files/declarations.h"
 
+//Adds a file to the table in the proper manner
 int addFileToHashTable(char* filePath, char* fileName) {
 	FILE* fp = fopen(filePath, "r");
 	if (fp == NULL) {

@@ -1,5 +1,7 @@
 #include "header_files/declarations.h"
 
+//A function returns the key value of a file 
+//by calculating the key of each word in the file
 unsigned long int calculateFileKey(FILE* fp) {
 
 	unsigned long int sum = 0;

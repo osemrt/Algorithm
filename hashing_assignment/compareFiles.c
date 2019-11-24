@@ -1,5 +1,7 @@
 #include "header_files/declarations.h"
 
+//A function to check whether 
+//the contents of the two files are the same or not
 int compareFiles(FILE* fp1, FILE* fp2) {
 
 	// Move the file pointer to the start.

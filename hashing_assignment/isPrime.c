@@ -1,5 +1,7 @@
 #include "header_files/declarations.h"
 
+//A function to check whether 
+//the given number is a prime number or not
 int isPrime(int num) {
 
 	// Corner cases

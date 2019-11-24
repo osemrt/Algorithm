@@ -1,5 +1,6 @@
 #include "header_files/declarations.h"
 
+//A function to copy the file to the desired directory
 int copyFileToDirectory(char* rootDirectory, File file) {
 
 	FILE* fp1, * fp2;

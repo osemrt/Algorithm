@@ -6,6 +6,8 @@ void showMenu() {
 	File file;
 	int choice;
 	int index;
+	//a flag is used to prevent the wrong choices of the user
+	int FLAG = FALSE;
 	do
 	{
 		printf("\n\n");
@@ -23,26 +25,40 @@ void showMenu() {
 		case 1:
 
 			clearScreen();
-			samples = getSamplesFileFromUser();
-			int tableSize = calculateTableSize(samples.count);
-			ht_create(tableSize);
-			addSamplesToHashTable(samples);
+			if (!FLAG) {				
+				samples = getSamplesFileFromUser();
+				int tableSize = calculateTableSize(samples.count);
+				ht_create(tableSize);
+				addSamplesToHashTable(samples);
+				FLAG = TRUE;
+			}
+			else {
+				printf("You already added samples.txt...\n");
+			}
+
 
 
 			break;
 		case 2:
 
 			clearScreen();
-			file = getFileFromUser();
-			index = addFileToHashTable(file.filePath, file.fileName);
+			if (FLAG) {
+				//After adding samples.txt
+				file = getFileFromUser();
+				index = addFileToHashTable(file.filePath, file.fileName);
 
-			if (index != SAME) {
-				addFileNameToSamples(samples.samplesPath, file.fileName);
-				copyFileToDirectory(samples.rootDirectory, file);
+				if (index != SAME) {
+					addFileNameToSamples(samples.samplesPath, file.fileName);
+					copyFileToDirectory(samples.rootDirectory, file);
+				}
 			}
-			
+			else {
+				printf("You have to add samples.txt before adding a file...\n");
+			}
 
-			break;		
+
+
+			break;
 		case 3:
 
 			clearScreen();
