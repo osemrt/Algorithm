@@ -8,7 +8,7 @@ int addFileNameToSamples(char* samplesPath, char* fileName) {
 		fprintf(fp, "\n", fileName);
 		fprintf(fp, "%s", fileName);
 		fclose(fp);
-		printf("%s is added to samples.txt...\n", fileName);
+		printf("\n%s is added to samples.txt...\n", fileName);
 		return TRUE;
 	}
 	else {

@@ -3,11 +3,12 @@
 //Creates a hash table with the given size
 void ht_create(int size) {
 
+	int i;
 	hashTable = (HashTable*)createArrayFromHeap(HASH_TABLE, 1);
 	hashTable->arr = (Entry*)createArrayFromHeap(ENTRY, size);
 	hashTable->size = size;
 
-	for (int i = 0; i < hashTable->size; i++) {
+	for (i = 0; i < hashTable->size; i++) {
 		hashTable->arr[i].status = EMPTY;
 		hashTable->arr[i].hashNode = (HashNode*)createArrayFromHeap(HASH_NODE, 1);
 	}
@@ -15,19 +16,25 @@ void ht_create(int size) {
 }
 
 //Adds the given entry to the table as described in the assignment
-int ht_put(FILE* fp1, unsigned long int key, Entry* entry) {
+int ht_put(FILE* fp1, unsigned long long int key, Entry* entry) {
 
 	int i = 0;
 	int index = hash(key, i);
 	Entry currentEntry = hashTable->arr[index];
 
+	printf("KEY: %ull, ", key);
+	printf("INDEX: %d, ", index);
+	printf("%s...", entry->hashNode->fileName);
+
 
 	while (currentEntry.status == OCCUPIED) {
+
+		printf("\nA collision occurred -> %s : %s", entry->hashNode->fileName, currentEntry.hashNode->fileName);
 
 		char* filePath = currentEntry.hashNode->filePath;
 		FILE* fp2 = fopen(filePath, "r");
 		if (fp2 == NULL) {
-			printf("%s could not be added to the table...\n", filePath);
+			printf("\n%s could not be added to the table...\n", filePath);
 			return -1;
 		}
 		else {
@@ -41,11 +48,11 @@ int ht_put(FILE* fp1, unsigned long int key, Entry* entry) {
 			else {
 				fclose(fp2);
 				char* newFileName = entry->hashNode->fileName;
-				char* currentFileName= currentEntry.hashNode->fileName;
+				char* currentFileName = currentEntry.hashNode->fileName;
 				printf("\n\"%s\" was already added as \"%s\"...\n", newFileName, currentFileName);
 				return SAME;
 			}
-			
+
 		}
 	}
 
@@ -80,11 +87,10 @@ void ht_print() {
 		printf("HashTable is not created yet!\n");
 	}
 
-	
+
 
 
 }
-
 
 
 

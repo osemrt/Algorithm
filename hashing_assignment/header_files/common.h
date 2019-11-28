@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +17,7 @@
 
 //A constant used in stringToKey()
 //to calculate the key of a string
-#define PRIME 29
+#define PRIME 31
 
 //Load factor value in the given formula
 #define LOAD_FACTOR 0.6
@@ -38,7 +36,7 @@
 
 
 //A structure for samples.txt
-typedef struct Samples{
+typedef struct Samples {
 	//files in samples.txt
 	struct File* files[MAX_FILE_COUNT];
 	//the root directory of samples.txt
@@ -71,6 +69,5 @@ typedef struct {
 	struct Entry* arr;
 	int size;
 }HashTable;
-
 
 HashTable* hashTable;

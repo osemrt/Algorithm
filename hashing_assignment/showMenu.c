@@ -25,7 +25,7 @@ void showMenu() {
 		case 1:
 
 			clearScreen();
-			if (!FLAG) {				
+			if (!FLAG) {
 				samples = getSamplesFileFromUser();
 				int tableSize = calculateTableSize(samples.count);
 				ht_create(tableSize);
@@ -73,8 +73,7 @@ void showMenu() {
 		}
 	} while (choice != 4);
 
-	return 0;
+	return;
 }
-
 
 

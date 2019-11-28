@@ -14,9 +14,7 @@ File getFileFromUser() {
 																	  //
 		fp = fopen(filePath, "r");									  //
 		if (fp == NULL) {											  //
-			//CSI[2J clears screen, 								  //
-			//CSI[H moves the cursor to top-left corner				  //
-			printf("\x1B[2J\x1B[H");								  //
+			clearScreen();											  //
 			printf("Could not open file: %s\n", filePath);			  //
 		}															  //
 																	  //

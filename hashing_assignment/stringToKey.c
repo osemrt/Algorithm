@@ -6,7 +6,7 @@ unsigned long long int stringToKey(char* str) {
 	int i = strlen(str);
 	int R = 1;
 
-	while (i>=0) {
+	while (i >= 0) {
 		key = key + R * str[i];
 		R = R * PRIME;
 		i--;

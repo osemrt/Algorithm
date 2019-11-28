@@ -20,15 +20,7 @@ int compareFiles(FILE* fp1, FILE* fp2) {
 
 	} while (ch1 != EOF && ch2 != EOF);
 
-	
-	// TODO: Check whether it is correct or not
-	if (!feof(fp1) || !feof(fp2))
-		return FALSE;
-
-	// Move the file pointer to the start.
-	rewind(fp1);
-	rewind(fp2);
-
 
 	return TRUE;
+
 }

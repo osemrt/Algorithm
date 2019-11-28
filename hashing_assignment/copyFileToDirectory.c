@@ -28,7 +28,7 @@ int copyFileToDirectory(char* rootDirectory, File file) {
 	{
 		fputc(c, fp2);
 		c = fgetc(fp1);
-	}	
+	}
 
 	fclose(fp1);
 	fclose(fp2);
